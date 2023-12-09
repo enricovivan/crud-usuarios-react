@@ -18,4 +18,4 @@ Para executar de fato siga este passo a passo:
     4.1. Corrija possíveis erros de conexão caso ocorram, para prosseguir para o próximo passo.
 5. Abra a pasta [cadUsuariosForms](https://github.com/enricovivan/crud-usuarios-react/tree/main/cadUsuariosForms) e execute também o comando `npm install`.
 6. Se tudo correr bem, digite `npm run dev` para rodar o projeto no modo desenvolvedor.
-7. A porta que está sendo usada para a API é a ``3000``, como pode ser observado no arquivo de [app.js](https://github.com/enricovivan/crud-usuarios-react/blob/main/apiCadUsuarios/src/app.js) dentro da pasta da API, mas caso deseja mudar o link da API, acesse o arquivo de configuração aqui: _*em desenvovimento*_.
+7. A porta que está sendo usada para a API é a ``3000``, como pode ser observado no arquivo de [app.js](https://github.com/enricovivan/crud-usuarios-react/blob/main/apiCadUsuarios/src/app.js) dentro da pasta da API, mas caso deseja mudar o link da API, acesse o arquivo de configuração aqui: [api.ts](https://github.com/enricovivan/crud-usuarios-react/blob/main/cadUsuariosForms/src/configs/api.ts).
