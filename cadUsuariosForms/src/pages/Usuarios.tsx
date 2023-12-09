@@ -3,6 +3,7 @@ import { UsersModel } from "../types/Users/UsersModel";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import MessageContext from "../hooks/MessageContext";
+import { URL_USERS } from "../configs/api";
 
 function Usuarios() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function Usuarios() {
 
   const loadUsers = async () => {
     await axios
-      .get("http://localhost:3000/api/users")
+      .get(URL_USERS)
       .then((res) => {
         setLoadedUsers(res.data);
       })
@@ -30,11 +31,11 @@ function Usuarios() {
 
     let user: UsersModel = {id: 0, login: '', senha: '', nome: '', email: '', ano_nascimento: 0}
     
-    await axios.get(`http://localhost:3000/api/users/${userId}`)
+    await axios.get(`${URL_USERS}/${userId}`)
         .then(res => {
             user = res.data
         })
-        .catch(err => {
+        .catch(_err => {
             alert("Erro ao buscar usuário!!, Atualize a página.")
             return
         })
@@ -43,11 +44,11 @@ function Usuarios() {
 
     if (!option) return
 
-    await axios.delete(`http://localhost:3000/api/users/delete/${userId}`)
-        .then(res => {
+    await axios.delete(`${URL_USERS}/delete/${userId}`)
+        .then(_res => {
             alert(`Usuário ${user?.nome} excluído com sucesso!!!`)
         })
-        .catch(err => {
+        .catch(_err => {
             alert(`Erro ao excluir o usuário ${user?.nome}`)
         })
 

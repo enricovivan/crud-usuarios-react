@@ -4,6 +4,7 @@ import { FormInputs } from "../types/Forms/FormInputs";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
+import { URL_USERS } from "../configs/api";
 
 interface FormRegister {
   login: string;
@@ -87,7 +88,7 @@ function CadastroUsuario() {
 
     try {
       await axios
-        .post("http://localhost:3000/api/users/save", {
+        .post(`${URL_USERS}/save`, {
           login,
           senha,
           nome,
@@ -109,7 +110,7 @@ function CadastroUsuario() {
             anoNasc: "",
           });
 
-        }).catch(err => {
+        }).catch(_err => {
           setMessage('Erro ao salvar o usuário!')
         });
 

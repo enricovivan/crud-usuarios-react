@@ -5,6 +5,7 @@ import axios from "axios"
 import { FormInputs } from "../types/Forms/FormInputs"
 import Form from "../components/Form/Form"
 import MessageContext from "../hooks/MessageContext"
+import { URL_USERS } from "../configs/api"
 
 interface FormEdit {
     login: string;
@@ -20,7 +21,7 @@ function EditarUsuario(){
     const {userId} = useParams()
     const navigate = useNavigate()
 
-    const { globalMessage, setGlobalMessage } = useContext(MessageContext)
+    const { setGlobalMessage } = useContext(MessageContext)
 
     const formRegister: FormInputs[] = [
         {
@@ -86,14 +87,14 @@ function EditarUsuario(){
                 navigate('/usuariosCadastrados')
             }
 
-            await axios.get(`http://localhost:3000/api/users/${userId}`)
+            await axios.get(`${URL_USERS}/${userId}`)
                 .then(res => {
                     editingUser = res.data
                     if (!editingUser) {
                         navigate('/usuariosCadastrados')
                     }
                 })
-                .catch(err => alert(`O usuário com ID ${userId} não existe!!`))
+                .catch(_err => alert(`O usuário com ID ${userId} não existe!!`))
 
             const {login, nome, email, ano_nascimento} = editingUser
 
@@ -127,7 +128,7 @@ function EditarUsuario(){
             return
         }
 
-        await axios.patch(`http://localhost:3000/api/users/update/${userId}`, {
+        await axios.patch(`${URL_USERS}/update/${userId}`, {
             login,
             senha,
             nome,

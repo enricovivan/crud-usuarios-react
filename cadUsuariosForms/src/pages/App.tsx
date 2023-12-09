@@ -4,6 +4,7 @@ import { FormInputs } from "../types/Forms/FormInputs"
 import { Link } from "react-router-dom"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { URL_USERS } from "../configs/api"
 
 interface FormLogin {
   login: string
@@ -39,7 +40,7 @@ function App() {
 
     try {
 
-      await axios.post("http://localhost:3000/api/users/login", formData)
+      await axios.post(`${URL_USERS}/login`, formData)
         .then(_res => {
           setMessage('Login Realizado com Sucesso!')
           alert('Login Feito com Sucesso!!!\nRedirecionando para página de visualização de todos os usuários cadastrados!')
